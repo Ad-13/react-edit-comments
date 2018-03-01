@@ -57,4 +57,43 @@
     margin: auto;
   }
 
+  .btn {
+    background-color: #2ecc71;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+    border-radius: 2px;
+    border-width: 0;
+    color: #ecf0f1;
+    cursor: pointer;
+    display: inline-block;
+    padding: 12px 24px;
+    text-decoration: none;
+    outline: none;
+    overflow: hidden;
+    position: relative;
+    transition: all .3s;
+    &:hover {
+      background-color: #27ae60;
+    }
+    &:focus {
+      background-color: #27ae60;
+    }
+  }
 /*-------------- end common ---------------*/
+
+.comments-app__header {
+  padding: 15px 0;
+}
+
+.comments-app__title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.comments-app__nav {
+  text-align: center;
+  
+  &__link {
+    margin: 0 15px;
+  }
+}

@@ -17,16 +17,15 @@ const store = configureStore()
 render(
 	<Provider store={store}>
 		<Router>
-			<div id='comments-app' className='comments-app'>
-				<div className='container'>
-					<nav className='comments-app__nav'>
-						<div className='comments-app__nav__item'>
-							<Link to='/comments' className='link'>Comments List</Link>
-						</div>
-						<div className='comments-app__nav__item'>
-							<Link to='/edit-comment' className='link'>Editor Page</Link>
-						</div>
-					</nav>
+			<div className='comments-app'>
+				<div className='comments-app__header'>
+					<div className='container'>
+						<h2 className='comments-app__title'>Choose comment & Edit !</h2>
+						<nav className='comments-app__nav'>
+							<Link to='/comments' className='btn comments-app__nav__link'>Comments List</Link>
+							<Link to='/edit-comment' className='btn comments-app__nav__link'>Editor Page</Link>
+						</nav>
+					</div>
 				</div>
 
 				<div className='comments-app-content'>
@@ -38,5 +37,5 @@ render(
 			</div>
 		</Router>
 	</Provider>,
-	document.getElementById('react-comments-app')
+	document.getElementById('injected-comments-app')
 );

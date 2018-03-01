@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
+import EditComment from '../components/EditComment'
 
 export default class CommentEditor extends Component {
 	render() {
 		return (
-			<div className='comment-editor'>
-				comment-editor page
-			</div>
+			<EditComment />
 		)
 	}
 }
