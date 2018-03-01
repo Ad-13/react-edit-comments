@@ -3,7 +3,8 @@ import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import configureStore from './store/configureStore'
-// import App from './containers/App'
+import Comments from './containers/Comments'
+import CommentEditor from './containers/CommentEditor';
 import './styles/app.scss' 
 import {
 	BrowserRouter as Router,
@@ -13,69 +14,29 @@ import {
 
 const store = configureStore()
 
-const Home = () => (
-	<div>
-		<h2>Home</h2>
-	</div>
-)
-
-const About = () => (
-	<div>
-		<h2>About</h2>
-	</div>
-)
-
-const Topic = ({ match }) => (
-	<div>
-		<h3>{match.params.topicId}</h3>
-	</div>
-)
-
-const Topics = ({ match }) => (
-	<div>
-		<h2>Topics</h2>
-		<ul>
-			<li>
-				<Link to={`${match.url}/rendering`}>
-					Rendering with React
-				</Link>
-			</li>
-			<li>
-				<Link to={`${match.url}/components`}>
-					Components
-				</Link>
-			</li>
-			<li>
-				<Link to={`${match.url}/props-v-state`}>
-					Props v. State
-				</Link>
-			</li>
-		</ul>
-
-		<Route path={`${match.path}/:topicId`} component={Topic} />
-		<Route exact path={match.path} render={() => (
-			<h3>Please select a topic.</h3>
-		)} />
-	</div>
-)
-
 render(
 	<Provider store={store}>
 		<Router>
-			<div>
-				<ul>
-					<li><Link to='/'>Home</Link></li>
-					<li><Link to='/about'>About</Link></li>
-					<li><Link to='/topics'>Topics</Link></li>
-				</ul>
+			<div id='comments-app' className='comments-app'>
+				<div className='container'>
+					<nav className='comments-app__nav'>
+						<div className='comments-app__nav__item'>
+							<Link to='/comments' className='link'>Comments List</Link>
+						</div>
+						<div className='comments-app__nav__item'>
+							<Link to='/edit-comment' className='link'>Editor Page</Link>
+						</div>
+					</nav>
+				</div>
 
-				<hr />
-
-				<Route exact path='/' component={Home} />
-				<Route path='/about' component={About} />
-				<Route path='/topics' component={Topics} />
+				<div className='comments-app-content'>
+					<div className='container'>
+						<Route path='/comments' component={Comments} />
+						<Route exact path='/edit-comment' component={CommentEditor} />
+					</div>
+				</div>
 			</div>
 		</Router>
 	</Provider>,
-	document.getElementById('root')
-)
+	document.getElementById('react-comments-app')
+);
