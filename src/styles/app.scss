@@ -120,6 +120,16 @@
   background: #445963;
   padding: 20px;
   color: #fff;
+
+  .comment__text {
+    max-width: 95%;
+    margin-bottom: 10px;
+  }
+  
+  .toggle-form {
+    position: relative;
+    top: -5px;
+  }
 }
 
 .comment {
@@ -138,4 +148,32 @@
 
 .comment__form {
   background: #E1E2E1;
+}
+
+.toggle-form {
+  background: transparent;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  position: relative;
+  float: right;
+  transition: all .3s;
+  &:hover {
+    background: rgba(255, 255, 255, .3);
+    transform: rotate(360deg);
+  }
+
+  &::before {
+    content: '';
+    border-right: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    width: 7px;
+    height: 7px;
+    position: absolute;
+    top: 28%;
+    left: 32%;
+    transform: rotate(45deg);
+  }
 }
