@@ -7,17 +7,18 @@ import CommentsList from '../components/CommentsList'
 
 class Comments extends Component {
 	render() {
+		const comments = this.props.commentsList.comments
 		return (
-			<CommentsList />
+			<CommentsList commentsArr={comments}/>
 		)
 	}
 }
 
-// function mapStateToProps(state) {
-// 	return {
-// 		
-// 	}
-// }
+function mapStateToProps(state) {
+	return {
+		commentsList: state.CommentsList
+	}
+}
 
 // function mapDispatchToProps(dispatch) {
 // 	return {
@@ -25,4 +26,4 @@ class Comments extends Component {
 // 	}
 // }
 
-export default connect()(Comments);
+export default connect(mapStateToProps)(Comments);

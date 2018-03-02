@@ -1,0 +1,2 @@
+export const EDIT_SUCCESS = 'EDIT_SUCCESS'
+export const EDIT_DECLINE = 'EDIT_DECLINE'

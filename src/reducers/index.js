@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import page from './page'
-import user from './user'
+import EditComment from './EditComment'
+import CommentsList from './CommentsList'
 
 export default combineReducers({
-	page,
-	user
+	EditComment,
+	CommentsList
 })

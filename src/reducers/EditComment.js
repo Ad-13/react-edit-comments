@@ -1,7 +1,7 @@
 import {
-	GET_PHOTOS_REQUEST,
-	GET_PHOTOS_SUCCESS
-} from '../constants/Page'
+	EDIT_REQUEST_SUCCESS,
+	EDIT_REQUEST_FAIL
+} from '../constants/CommentsList'
 
 const initialState = {
 	year: 2016,
@@ -9,12 +9,12 @@ const initialState = {
 	fetching: false
 }
 
-export default function page(state = initialState, action) {
+export default function EditComment(state = initialState, action) {
 	switch (action.type) {
-	case GET_PHOTOS_REQUEST:
+	case EDIT_REQUEST_SUCCESS:
 		return { ...state, year: action.payload, fetching: true }
 
-	case GET_PHOTOS_SUCCESS:
+	case EDIT_REQUEST_FAIL:
 		return { ...state, photos: action.payload, fetching: false }
 
 	default:
