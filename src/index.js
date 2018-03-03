@@ -3,8 +3,8 @@ import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import configureStore from './store/configureStore'
-import Comments from './containers/Comments'
-import CommentEditor from './containers/CommentEditor';
+import ArticleList from './containers/ArticleList'
+import ArticleEditor from './containers/ArticleEditor';
 import './styles/app.scss' 
 import {
 	BrowserRouter as Router,
@@ -17,25 +17,25 @@ const store = configureStore()
 render(
 	<Provider store={store}>
 		<Router>
-			<div className='comments-app'>
-				<div className='comments-app__header'>
+			<div className='articles-app'>
+				<div className='articles-app__header'>
 					<div className='container'>
-						<h2 className='comments-app__title'>Choose comment & Edit !</h2>
-						<nav className='comments-app__nav'>
-							<Link to='/comments' className='btn comments-app__nav__link'>Comments List</Link>
-							<Link to='/edit-comment' className='btn comments-app__nav__link'>Editor Page</Link>
+						<h2 className='articles-app__title'>Choose article & Edit !</h2>
+						<nav className='articles-app__nav'>
+							<Link to='/articles' className='btn articles-app__nav__link'>articles List</Link>
+							<Link to='/edit-article' className='btn articles-app__nav__link'>Editor Page</Link>
 						</nav>
 					</div>
 				</div>
 
-				<div className='comments-app-content'>
+				<div className='articles-app-content'>
 					<div className='container'>
-						<Route path='/comments' component={Comments} />
-						<Route exact path='/edit-comment' component={CommentEditor} />
+						<Route path='/articles' component={ArticleList} />
+						<Route exact path='/edit-article' component={ArticleEditor} />
 					</div>
 				</div>
 			</div>
 		</Router>
 	</Provider>,
-	document.getElementById('injected-comments-app')
+	document.getElementById('injected-articles-app')
 );

@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import EditComment from './EditComment'
-import CommentsList from './CommentsList'
+import EditArticle from './EditArticle'
+import ArticleList from './ArticleList'
 
 export default combineReducers({
-	EditComment,
-	CommentsList
+	EditArticle,
+	ArticleList
 })

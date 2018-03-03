@@ -3,32 +3,37 @@ import {
 	EDIT_REQUEST,
 	EDIT_REQUEST_SUCCESS,
 	EDIT_REQUEST_FAIL
-} from '../constants/CommentsList'
+} from '../constants/ArticleList'
 
 const initialState = {
-	comments: [
+	articles: [
 		{
 			id: 1,
+			name: 'SpaceX',
 			text: 'Some text 1',
 			isFormOpened: false
 		},
 		{
 			id: 2,
+			name: 'SpaceX',
 			text: 'Some text 2',
 			isFormOpened: false
 		},
 		{
 			id: 3,
+			name: 'SpaceX',
 			text: 'Some text 3',
 			isFormOpened: false
 		},
 		{
 			id: 4,
+			name: 'SpaceX',
 			text: 'Some text 4',
 			isFormOpened: false
 		},
 		{
 			id: 5,
+			name: 'SpaceX',
 			text: 'Some text 5',
 			isFormOpened: false
 		}
@@ -36,7 +41,7 @@ const initialState = {
 	requestStatus: ''
 }
 
-export default function CommentsList(state = initialState, action) {
+export default function ArticleList(state = initialState, action) {
 	switch (action.type) {
 	case EDIT_REQUEST:
 		return { ...state, requestStatus: 'sending' }

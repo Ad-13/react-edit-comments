@@ -1,19 +1,20 @@
 import {
 	EDIT_REQUEST_SUCCESS,
 	EDIT_REQUEST_FAIL
-} from '../constants/CommentsList'
+} from '../constants/ArticleList'
 
 const initialState = {
-	comments: [
+	articlesToEdit: [
 		{
 			id: 1,
+			name: 'SpaceX',
 			originalText: 'Some text 1',
 			suggestionText: 'Suggestion To Text 1'
 		}
 	]
 }
 
-export default function EditComment(state = initialState, action) {
+export default function EditArticle(state = initialState, action) {
 	switch (action.type) {
 	case EDIT_REQUEST_SUCCESS:
 		return { ...state, year: action.payload, fetching: true }
