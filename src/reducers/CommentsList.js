@@ -21,6 +21,16 @@ const initialState = {
 			id: 3,
 			text: 'Some text 3',
 			isFormOpened: false
+		},
+		{
+			id: 4,
+			text: 'Some text 4',
+			isFormOpened: false
+		},
+		{
+			id: 5,
+			text: 'Some text 5',
+			isFormOpened: false
 		}
 	],
 	requestStatus: ''
