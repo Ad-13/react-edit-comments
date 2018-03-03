@@ -7,6 +7,7 @@ const initialState = {
 	articlesToEdit: [
 		{
 			id: 1,
+			articleUrl: 'https://dagbladet.no/url-1',
 			name: 'SpaceX',
 			originalText: 'Some text 1',
 			suggestionText: 'Suggestion To Text 1'

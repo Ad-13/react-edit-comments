@@ -133,6 +133,15 @@
 	margin: 0 auto 20px;
 	overflow: hidden;
 	padding: 15px;
+	
+	.loader {
+		display: block;
+		margin: auto;
+
+		.inner1, .inner2, .inner3 {
+			background: #1b3039;
+		}
+	}
 }
 
 .article__header {
@@ -152,6 +161,7 @@
 	color: #fff;
 	padding: 20px;
 	position: relative;
+	transition: all .3s;
 
 	.article__text {
 		font-style: italic;
@@ -187,7 +197,6 @@
 	&:last-child {
 		margin-bottom: 0;
 	}
-
 	&--edit {
 		.article__text {
 			max-width: 100%;
@@ -198,6 +207,42 @@
 				}
 			}
 		}
+	}
+	&.success {
+		.article__content {
+			height: 0;
+			overflow: hidden;
+			padding: 0;
+		}
+		.message--success {
+			display: block;
+		}
+	}
+	&.fail {
+		.message--fail {
+			display: block;
+		}
+	}
+	&.pending {
+		.loader {
+			display: inline-block;
+		}
+		.submit[disabled] {
+			opacity: 0.6;
+			&:hover {
+				background: rgba(255, 255, 255, 0.1);
+			}
+		}
+	}
+
+	.message {
+		display: none;
+		margin-top: 10px;
+	}
+
+	.loader {
+		display: none;
+		margin-left: 15px;
 	}
 }
 
@@ -293,6 +338,7 @@
 	outline: 0;
 	padding: 7px 15px;
 	transition: all .3s;
+	vertical-align: middle;
 	&:hover {
 		background: rgba(255, 255, 255, .2);
 	}
@@ -324,3 +370,205 @@
 		padding-top: 20px;
 	}
 }
+
+.form-input {
+	position: relative;
+	&.error {
+		.tooltip {
+			top: 116%;
+			opacity: 1;
+			z-index: 1;
+		}
+	}
+
+	.tooltip {
+		top: 80%;
+		right: 20px;
+		opacity: 0;
+		z-index: -1;
+	}
+}
+
+.tooltip {
+	background: rgba(0, 0, 0, .6);
+	border-radius: 20px;
+	color: #fff;
+	display: inline-block;
+	font-size: 11px;
+	padding: 7px;
+	position: absolute;
+	transition: all .3s;
+	&::before {
+		content: '';
+		border: 10px solid transparent;
+		border-bottom: 10px solid rgba(0, 0, 0, .6);
+		position: absolute;
+		bottom: 100%;
+		left: 50%;
+		transform: translate(-50%, 0);
+	}
+}
+
+.message {
+	color: #fff;
+	padding: 20px;
+	padding-left: 40px;
+	transition: all .3s;
+	position: relative;
+	transition: all .3s;
+	&.message--fail {
+		background: rgba(193, 24, 91, .6);
+
+		.img {
+			transform: translate(0, -50%) rotate(45deg);
+			&::before,
+			&::after {
+				transform: translate(-50%, -50%);
+			}
+	
+			&::after {
+				transform: translate(-50%, -50%) rotate(90deg);
+			}
+		}
+	}
+	&.message--success {
+		background: rgba(76, 175, 80, .6);
+		margin-top: 0;
+
+		.img {
+			&::before {
+				background: transparent;
+				border-right: 1px solid #fff;
+				border-bottom: 1px solid #fff;
+				width: 7px;
+				height: 7px;
+				margin-top: -2px;
+				transform: translate(-50%, -50%) rotate(45deg);
+			}
+			&::after {
+				display: none;
+			}
+		}
+	}
+
+	
+	.img {
+		background: transparent;
+		border: 1px solid #fff;
+		border-radius: 50%;
+		display: inline-block;
+		height: 20px;
+		width: 20px;
+		position: absolute;
+		top: 50%;
+		left: 10px;
+		transform: translate(0, -50%);
+
+		&::before,
+		&::after {
+			content: '';
+			background: #fff;
+			height: 15px;
+			width: 1px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+		}
+	}
+}
+
+
+.fade-in {
+	animation: fade-in 5s ease-in-out 0 1;
+	animation-fill-mode: forwards;
+}
+
+.fade-out {
+	animation: fade-out 5s ease-in-out 0 1;
+	animation-fill-mode: forwards;
+}
+
+@keyframes fade-in {
+	0% {
+		opacity: 0;
+	}
+	99% {
+		opacity: 1;
+	}
+	100% {
+		display: block;
+	}
+} 
+
+@keyframes fade-out {
+	0% {
+		opacity: 1;
+	}
+	99% {
+		opacity: 0;
+	}
+	100% {
+		display: none;
+	}
+} 
+
+
+
+/*-------------- loader ---------------*/
+
+$size: 1em;
+$duration: 0.75s;
+$border-radius: $size;
+$bg-color: lightgray;
+
+@keyframes rotate{
+  0%{
+    transform: translateY(0%);
+  }
+  30%{
+    transform: translateY(-$size/4);
+  }
+  50%{
+    transform: translateY(0%);
+  }
+  70%{
+    transform: translateY($size/4);
+  }
+
+}
+
+.loader{
+  display: inline-block;
+  width: 5* $size;
+  vertical-align: middle;
+  
+  .inner1, .inner2, .inner3{
+    display: inline-block;
+    
+    margin: $size*0.125;
+    width: $size/2;
+    height:$size/2;
+  
+    border:1px solid $bg-color;
+    border-radius: $border-radius;
+    background-color: $bg-color;
+ 
+    transform-origin: 50%;
+    animation-duration: $duration;
+    animation-name: rotate;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+  
+  .inner2{
+    animation-delay: $duration*0.25;
+  }
+  
+  .inner3{
+    animation-delay: $duration*0.5;
+  }
+
+}
+
+
+/*-------------- end loader ---------------*/

@@ -12,14 +12,14 @@ export default class Article extends Component {
 		}
 
 		return (
-			<div key={article.id} className='article'>
+			<div key={article.id} className={'article' + (article.requestStatus ? ' ' + article.requestStatus : '')}>
 				<div className='article__header'>
 					<p className='article__name'>Article name: <span className='name'>{article.name}</span></p>
 					<p className='article__num'>№ {article.id}</p>
 				</div>
 				<div className='article__content'>
 					<button
-						className={article.isFormOpened ? 'toggle-form active' : 'toggle-form'}
+						className={'toggle-form' + (article.isFormOpened ? ' active' : '')}
 						onClick={toggleForm.bind(this)}
 					>
 						<span className='img'></span>
@@ -30,25 +30,67 @@ export default class Article extends Component {
 						height={formHeight}
 					>
 						<form className='article__form'>
-							<textarea
-								className='edit-article'
-								defaultValue=''
-								placeholder='Your version'
-							></textarea>
+							<div className='form-input'>
+								<textarea
+									className='edit-article'
+									defaultValue=''
+									placeholder='Your version'
+									ref='suggestionText'
+									onFocus={this.hideTooltip.bind(this)}
+								></textarea>
+								<span className='tooltip'>Yo! You cannot send empty message!</span>
+							</div>
 							<button
 								className='submit'
 								onClick={(e) => this.sendSuggestion(e)}
+								disabled={article.requestStatus == 'pending' ? true : false }
 							>Edit paragraph</button>
+							<div className='loader'>
+								<span className='inner1'></span>
+								<span className='inner2'></span>
+								<span className='inner3'></span>
+							</div>
 						</form>
 					</AnimateHeight>
+					<p className='message message--fail'>
+						<span className='img'></span>
+						<span className='txt'>Sorry, your request fail. Please try again.</span>
+					</p>
 				</div>
+				<p className='message message--success'>
+					<span className='img'></span>
+					<span className='txt'>Thank you! Your suggestion is under consideration...</span>
+				</p>
 			</div>
 		)
 	}
 
+	hideTooltip() {
+		this.refs.suggestionText.parentElement.classList.remove('error');
+	}
+
 	sendSuggestion(e) {
 		e.preventDefault();
-		console.log('sendSuggestion');
+		let modifiedArticle;
+		const suggestion = this.refs.suggestionText;
+		const suggestionText = suggestion.value;
+		const article = this.props.article;
+		const articles = this.props.articles;
+
+		if (!suggestionText) {
+			suggestion.parentElement.classList.add('error');
+			return;
+		} else {
+			modifiedArticle = {
+				id: article.id,
+				articleUrl: article.articleUrl,
+				name: article.name,
+				originalText: article.text,
+				suggestionText: suggestionText
+			}
+		}
+
+		this.props.editRequest(articles, modifiedArticle);
 	}
 
 }
