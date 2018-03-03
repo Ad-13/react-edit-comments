@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 
 export default class CommentsList extends Component {
-
+	
 	render() {
 		const commentsArr = this.props.commentsArr || []
-		const self = this
+		const toggleForm = function () {
+			this.props.toggleForm();
+			this.animateHeight();
+		}
 		const commentsTemplate = commentsArr.map(function (item) {
 			return (
 				<div key={item.id} className='comment'>
@@ -14,9 +17,10 @@ export default class CommentsList extends Component {
 					</div>
 					<div className='comment__content'>
 						<button
-							className='toggle-form'
-							onClick={self.toggleForm}
-							ref='toggle-form'>
+							className={item.isFormOpened ? 'toggle-form active' : 'toggle-form'}
+							onClick={() => toggleForm(commentsArr, item.id)}
+						>
+							<span className='img'></span>
 						</button>
 						<p className='comment__text'>{item.text}</p>
 						<form  className='comment__form'>
@@ -24,8 +28,10 @@ export default class CommentsList extends Component {
 								className='edit-comment'
 								defaultValue=''
 								placeholder='Your version'
-								ref='edit-comment'
 							></textarea>
+							<button
+								className='submit'
+							>Edit Commesssnt</button>
 						</form>
 					</div>
 				</div>
@@ -39,9 +45,29 @@ export default class CommentsList extends Component {
 		)
 	}
 
-	
-	toggleForm() {
-		console.log('asas');
+	animateHeight() {
+		console.log('height');
+	}
+
+	animate(options) {
+
+		var start = performance.now();
+
+		requestAnimationFrame(function animate(time) {
+			// timeFraction от 0 до 1
+			var timeFraction = (time - start) / options.duration;
+			if (timeFraction > 1) timeFraction = 1;
+
+			// текущее состояние анимации
+			var progress = options.timing(timeFraction)
+
+			options.draw(progress);
+
+			if (timeFraction < 1) {
+				requestAnimationFrame(animate);
+			}
+
+		});
 	}
 
 }

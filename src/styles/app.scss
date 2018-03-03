@@ -1,179 +1,268 @@
 /* http://meyerweb.com/eric/tools/css/reset/
-   v2.0 | 20110126
-   License: none (public domain)
+	 v2.0 | 20110126
+	 License: none (public domain)
 */
 
-  html, body, div, span, applet, object, iframe,
-  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-  a, abbr, acronym, address, big, cite, code,
-  del, dfn, em, img, ins, kbd, q, s, samp,
-  small, strike, strong, sub, sup, tt, var,
-  b, u, i, center,
-  dl, dt, dd, ol, ul, li,
-  fieldset, form, label, legend,
-  table, caption, tbody, tfoot, thead, tr, th, td,
-  article, aside, canvas, details, embed,
-  figure, figcaption, footer, header, hgroup,
-  menu, nav, output, ruby, section, summary,
-  time, mark, audio, video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
-  }
-  /* HTML5 display-role reset for older browsers */
-  article, aside, details, figcaption, figure,
-  footer, header, hgroup, menu, nav, section {
-    display: block;
-  }
-  body {
-    line-height: 1;
-  }
-  ol, ul {
-    list-style: none;
-  }
-  blockquote, q {
-    quotes: none;
-  }
-  blockquote:before, blockquote:after,
-  q:before, q:after {
-    content: '';
-    content: none;
-  }
-  table {
-    border-collapse: collapse;
-    border-spacing: 0;
-  }
+	html, body, div, span, applet, object, iframe,
+	h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+	a, abbr, acronym, address, big, cite, code,
+	del, dfn, em, img, ins, kbd, q, s, samp,
+	small, strike, strong, sub, sup, tt, var,
+	b, u, i, center,
+	dl, dt, dd, ol, ul, li,
+	fieldset, form, label, legend,
+	table, caption, tbody, tfoot, thead, tr, th, td,
+	article, aside, canvas, details, embed,
+	figure, figcaption, footer, header, hgroup,
+	menu, nav, output, ruby, section, summary,
+	time, mark, audio, video {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font-size: 100%;
+		font: inherit;
+		vertical-align: baseline;
+	}
+	/* HTML5 display-role reset for older browsers */
+	article, aside, details, figcaption, figure,
+	footer, header, hgroup, menu, nav, section {
+		display: block;
+	}
+	body {
+		line-height: 1;
+	}
+	ol, ul {
+		list-style: none;
+	}
+	blockquote, q {
+		quotes: none;
+	}
+	blockquote:before, blockquote:after,
+	q:before, q:after {
+		content: '';
+		content: none;
+	}
+	table {
+		border-collapse: collapse;
+		border-spacing: 0;
+	}
+	
+	* {
+		box-sizing: border-box;
+	}
 
 /*-------------- end reset ---------------*/
 
 /*-------------- common ---------------*/
-  .container {
-    display: block;
-    max-width: 1024px;
-    padding: 0 12px;
-    margin: auto;
-  }
+	body {
+		font-family: arial, sans-serif;
+	}
+	.container {
+		display: block;
+		max-width: 1024px;
+		padding: 0 12px;
+		margin: auto;
+	}
 
-  .btn {
-    background-color: #2ecc71;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
-    border-radius: 2px;
-    border-width: 0;
-    color: #ecf0f1;
-    cursor: pointer;
-    display: inline-block;
-    padding: 12px 24px;
-    text-decoration: none;
-    outline: none;
-    overflow: hidden;
-    position: relative;
-    transition: all .3s;
-    &:hover {
-      background-color: #27ae60;
-    }
-    &:focus {
-      background-color: #27ae60;
-    }
-  }
+	.btn {
+		background-color: #2ecc71;
+		box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+		border-radius: 2px;
+		border-width: 0;
+		color: #ecf0f1;
+		cursor: pointer;
+		display: inline-block;
+		padding: 12px 24px;
+		text-decoration: none;
+		outline: none;
+		overflow: hidden;
+		position: relative;
+		transition: all .3s;
+		&:hover {
+			background-color: #27ae60;
+		}
+		&:focus {
+			background-color: #27ae60;
+		}
+	}
 /*-------------- end common ---------------*/
 
 .comments-app__header {
-  padding: 15px 0;
+	padding: 15px 0;
 }
 
 .comments-app__title {
-  font-size: 24px;
-  margin-bottom: 20px;
-  text-align: center;
+	font-size: 24px;
+	margin-bottom: 20px;
+	text-align: center;
 }
 
 .comments-app__nav {
-  text-align: center;
-  
-  &__link {
-    margin: 0 15px;
-  }
+	text-align: center;
+	
+	&__link {
+		margin: 0 15px;
+	}
 }
 
 .comments-list {
-  background: #dcdcdc;
-  border-radius: 5px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
-  max-width: 600px;
-  margin: 0 auto 20px;
-  overflow: hidden;
-  padding: 15px;
+	background: #dcdcdc;
+	border-radius: 5px;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+	max-width: 600px;
+	margin: 0 auto 20px;
+	overflow: hidden;
+	padding: 15px;
 }
 
 .comment__header {
-  background: #1b3039;
-  color: #fff;
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
+	background: #1b3039;
+	color: #fff;
+	display: flex;
+	justify-content: space-between;
+	padding: 20px;
 }
 
 .comment__content {
-  background: #445963;
-  padding: 20px;
-  color: #fff;
+	background: #445963;
+	color: #fff;
+	padding: 20px;
+	position: relative;
 
-  .comment__text {
-    max-width: 95%;
-    margin-bottom: 10px;
-  }
-  
-  .toggle-form {
-    position: relative;
-    top: -5px;
-  }
+	.comment__text {
+		max-width: 95%;
+		margin-bottom: 10px;
+	}
+	
+	.toggle-form {
+		position: absolute;
+		top: -10px;
+		right: 20px;
+	}
 }
 
 .comment {
-  border-radius: 2px;
-  margin-bottom: 10px;
-  overflow: hidden;
-  position: relative;
-  transition: all .2s ease-in-out;
-  &:hover {
-    margin: 0 -10px 10px;
-  }
-  &:last-child {
-    margin-bottom: 0;
-  }
+	border-radius: 2px;
+	margin-bottom: 10px;
+	overflow: hidden;
+	position: relative;
+	transition: all .2s ease-in-out;
+	&:hover {
+		margin: 0 -10px 10px;
+	}
+	&:last-child {
+		margin-bottom: 0;
+	}
 }
 
 .comment__form {
-  background: #E1E2E1;
+	background: transparent;
+	transition: all .3s;
+
+	.edit-comment {
+		margin-bottom: 15px;
+	}
 }
 
 .toggle-form {
-  background: transparent;
-  cursor: pointer;
-  width: 25px;
-  height: 25px;
-  border: 1px solid #fff;
-  border-radius: 50%;
-  position: relative;
-  float: right;
-  transition: all .3s;
-  &:hover {
-    background: rgba(255, 255, 255, .3);
-    transform: rotate(360deg);
-  }
+	background: #44768e;
+	border: 0;
+	border-radius: 50%;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+	cursor: pointer;
+	outline: none;
+	position: relative;
+	transition: all .3s;
+	width: 35px;
+	height: 35px;
+	&:hover {
+		background: #4e85a0;
+	}
+	&.active {
+		.img {
+			transform: rotate(315deg);
+			&::before,
+			&::after {
+				height: 18px;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+			&::after {
+				transform: translate(-50%, -50%) rotate(90deg);
+			}
+		}
+	}
 
-  &::before {
-    content: '';
-    border-right: 1px solid #fff;
-    border-bottom: 1px solid #fff;
-    width: 7px;
-    height: 7px;
-    position: absolute;
-    top: 28%;
-    left: 32%;
-    transform: rotate(45deg);
-  }
+	.img {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		border-radius: 50%;
+		transform: rotate(45deg);
+		transition: all .6s;
+		&::before,
+		&::after {
+			content: '';
+			background: #fff;
+			display: inline-block;
+			width: 1px;
+			height: 14px;
+			position: absolute;
+			transition: all .3s;
+		}
+		&::before {
+			top: 20%;
+			left: 58%;
+		}
+		&::after {
+			top: 40%;
+			left: 38%;
+			transform: rotate(90deg);
+		}
+	}
+}
+
+.edit-comment {
+	background: #E1E2E1;
+	border: 0;
+	display: block;
+	font-family: arial, sans-serif;
+	margin: 0px;
+	min-height: 60px;
+	padding: 5px;
+	resize: vertical;
+	height: 100%;
+	width: 100%;
+}
+
+.submit {
+	background: rgba(255, 255, 255, .1);
+	border: 1px solid #fff;
+	border-radius: 50px;
+	color: #fff;
+	cursor: pointer;
+	outline: 0;
+	padding: 7px 15px;
+	transition: all .3s;
+	&:hover {
+		background: rgba(255, 255, 255, .2);
+	}
+}
+
+
+
+
+
+
+@keyframes animationModal {
+	0% {
+		display: block;
+		height: 0;
+	}
+	100% {
+		height: 100%;
+	} 
 }
