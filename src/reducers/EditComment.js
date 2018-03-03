@@ -4,9 +4,13 @@ import {
 } from '../constants/CommentsList'
 
 const initialState = {
-	year: 2016,
-	photos: [],
-	fetching: false
+	comments: [
+		{
+			id: 1,
+			originalText: 'Some text 1',
+			suggestionText: 'Suggestion To Text 1'
+		}
+	]
 }
 
 export default function EditComment(state = initialState, action) {

@@ -37,12 +37,18 @@ export default class Comment extends Component {
 							></textarea>
 							<button
 								className='submit'
+								onClick={(e) => this.sendSuggestion(e)}
 							>Edit Commesssnt</button>
 						</form>
 					</AnimateHeight>
 				</div>
 			</div>
 		)
+	}
+
+	sendSuggestion(e) {
+		e.preventDefault();
+		console.log('sendSuggestion');
 	}
 
 }
