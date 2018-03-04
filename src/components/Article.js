@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import AnimateHeight from 'react-animate-height';
+import Loader from './Loader'
 
 export default class Article extends Component {
 	
@@ -45,11 +46,7 @@ export default class Article extends Component {
 								onClick={(e) => this.sendSuggestion(e)}
 								disabled={article.requestStatus == 'pending' ? true : false }
 							>Edit paragraph</button>
-							<div className='loader'>
-								<span className='inner1'></span>
-								<span className='inner2'></span>
-								<span className='inner3'></span>
-							</div>
+							<Loader />
 						</form>
 					</AnimateHeight>
 					<p className='message message--fail'>
@@ -73,11 +70,11 @@ export default class Article extends Component {
 		e.preventDefault();
 		let modifiedArticle;
 		const suggestion = this.refs.suggestionText;
-		const suggestionText = suggestion.value;
+		const usersText = suggestion.value;
 		const article = this.props.article;
 		const articles = this.props.articles;
 
-		if (!suggestionText) {
+		if (!usersText) {
 			suggestion.parentElement.classList.add('error');
 			return;
 		} else {
@@ -86,7 +83,7 @@ export default class Article extends Component {
 				articleUrl: article.articleUrl,
 				name: article.name,
 				originalText: article.text,
-				suggestionText: suggestionText
+				usersText: [usersText]
 			}
 		}
 

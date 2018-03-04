@@ -2,12 +2,17 @@
 import {
 	TOGGLE_FORM,
 	EDIT_REQUEST,
-	EDIT_REQUEST_SUCCESS,
+	EDIT_REQUEST_ACCEPTED,
 	EDIT_REQUEST_FAIL,
 	ARTICLES_REQUEST,
 	ARTICLES_REQUEST_SUCCESS,
-	ARTICLES_REQUEST_FAIL
+	ARTICLES_REQUEST_FAIL,
+	HANDLE_EMPTY_LIST
 } from '../constants/ArticleList'
+
+import {
+	SET_ARTICLE_TO_EDIT
+} from '../constants/EditArticle'
 
 const mockArticlesReqData = {
 	articles: [
@@ -89,7 +94,6 @@ export function editRequest(articles, modifiedArticle) {
 		httpRequest('POST', 'http://www.omdbapi.com/?apikey=b080b47c&plot=full&s=Star%20Wars&page=1')
 			.then(
 				response => {
-					console.log(`Fulfilled: ${response}`)
 					let modifiedState = articles.map((article) => {
 						if (article.id == modifiedArticle.id) {
 							article.requestStatus = 'success';
@@ -98,12 +102,15 @@ export function editRequest(articles, modifiedArticle) {
 						return article;
 					})
 					dispatch ({
-						type: EDIT_REQUEST_SUCCESS,
+						type: EDIT_REQUEST_ACCEPTED,
 						payload: modifiedState
+					})
+					dispatch ({
+						type: SET_ARTICLE_TO_EDIT,
+						payload: modifiedArticle
 					})
 				},
 				error => {
-					console.log(`Rejected: ${error}`)
 					let modifiedState = articles.map((article) => {
 						if (article.id == modifiedArticle.id) {
 							article.requestStatus = 'fail';
@@ -132,10 +139,17 @@ export function getArticles(url) {
 			.then(
 				response => {
 					console.log(`Fulfilled: ${response}`)
-					dispatch({
-						type: ARTICLES_REQUEST_SUCCESS,
-						payload: mockArticlesReqData.articles
-					})
+					if (mockArticlesReqData.articles.length) {
+						dispatch({
+							type: ARTICLES_REQUEST_SUCCESS,
+							payload: mockArticlesReqData.articles
+						})
+					} else {
+						dispatch({
+							type: HANDLE_EMPTY_LIST,
+							payload: mockArticlesReqData.articles
+						})
+					}
 				},
 				error => {
 					console.log(`Rejected: ${error}`)

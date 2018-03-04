@@ -1,9 +1,17 @@
 import React, { Component } from 'react'
+import UserText from './UserText'
 
 export default class EditArticle extends Component {
 
 	render() {
 		const article = this.props.article || {}
+		const usersTexts = article.usersText || []
+		const usersTextTemplate = usersTexts.map((userText, index) => {
+			return <UserText
+				key={index}
+				userText={userText}
+			/>
+		})
 
 		return (
 			<div key={article.id} className='article article--edit'>
@@ -15,7 +23,7 @@ export default class EditArticle extends Component {
 					<p className='article__text article__text--title'>
 						<span className='txt'>Original Text:</span>
 					</p>
-					<p className='article__text article__text--original'>{article.text}</p>
+					<p className='article__text article__text--original'>{article.originalText}</p>
 					<div className='users-suggestions'>
 						<p className='article__text article__text--title'>
 							<span className='txt'>Users suggestions:</span>
@@ -24,21 +32,7 @@ export default class EditArticle extends Component {
 								onClick={(e) => this.sendSuggestion(e)}
 							>Delete All</button>
 						</p>
-						<p className='article__text'>Some suggestion text 1</p>
-						<button
-							className='btn btn--approve'
-							onClick={(e) => this.sendSuggestion(e)}
-						>Approve</button>
-						<p className='article__text'>Some suggestion text 2</p>
-						<button
-							className='btn btn--approve'
-							onClick={(e) => this.sendSuggestion(e)}
-						>Approve</button>
-						<p className='article__text'>Some suggestion text 3</p>
-						<button
-							className='btn btn--approve'
-							onClick={(e) => this.sendSuggestion(e)}
-						>Approve</button>
+						{usersTextTemplate}
 						<form className='article__form'>
 							<p className='article__text article__text--title'>
 								<span className='txt'>Your suggestions:</span>

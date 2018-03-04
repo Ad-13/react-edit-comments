@@ -6,13 +6,13 @@ import * as ArticleListActions from '../actions/ArticleListActions'
 
 class ArticleEditor extends Component {
 	render() {
-		const articles = this.props.articleList.articles
+		const articles = this.props.editArticle.articlesToEdit
 		const articlesTemplate = articles.map(article => {
 			return <EditArticle key={article.id} article={article} />
 		})
 		return (
 			<div className='articles-list'>
-				{articlesTemplate}
+				{articles.length ? articlesTemplate : <p className='no-items'> There are no suggestions from users</p>}
 			</div>
 		)
 	}
@@ -20,7 +20,8 @@ class ArticleEditor extends Component {
 
 function mapStateToProps(state) {
 	return {
-		articleList: state.ArticleList
+		articleList: state.ArticleList,
+		editArticle: state.EditArticle
 	}
 }
 
