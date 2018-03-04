@@ -12,7 +12,13 @@ import {
 	Link
 } from 'react-router-dom'
 
+import {
+	URL_PARAMETER
+} from './constants/constants'
+
 const store = configureStore()
+const usersPage = '/fb?articleURL=' + URL_PARAMETER
+const editPage = '/fb/results'
 
 render(
 	<Provider store={store}>
@@ -22,16 +28,16 @@ render(
 					<div className='container'>
 						<h2 className='articles-app__title'>Choose article & Edit !</h2>
 						<nav className='articles-app__nav'>
-							<Link to='/articles' className='btn articles-app__nav__link'>articles List</Link>
-							<Link to='/edit-article' className='btn articles-app__nav__link'>Editor Page</Link>
+							<Link to={usersPage} className='btn articles-app__nav__link'>articles List</Link>
+							<Link to={editPage} className='btn articles-app__nav__link'>Editor Page</Link>
 						</nav>
 					</div>
 				</div>
 
 				<div className='articles-app-content'>
 					<div className='container'>
-						<Route path='/articles' component={ArticleList} />
-						<Route exact path='/edit-article' component={ArticleEditor} />
+						<Route path={usersPage} component={ArticleList} />
+						<Route exact path={editPage} component={ArticleEditor} />
 					</div>
 				</div>
 			</div>

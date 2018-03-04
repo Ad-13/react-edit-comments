@@ -15,53 +15,13 @@ import {
 } from '../constants/EditArticle'
 
 import {
+	MOCK_URL,
+	MOCK_ARTICLES_REQ_DATA
+} from '../constants/constants'
+
+import {
 	httpRequest
 } from '../utils/utils'
-
-const mockArticlesReqData = {
-	articles: [
-		{
-			id: 1,
-			articleUrl: 'https://dagbladet.no/url-1',
-			name: 'SpaceX',
-			text: 'Some text 1',
-			isFormOpened: false,
-			requestStatus: ''
-		},
-		{
-			id: 2,
-			articleUrl: 'https://dagbladet.no/url-2',
-			name: 'SpaceX',
-			text: 'Some text 2',
-			isFormOpened: false,
-			requestStatus: ''
-		},
-		{
-			id: 3,
-			articleUrl: 'https://dagbladet.no/url-3',
-			name: 'SpaceX',
-			text: 'Some text 3',
-			isFormOpened: false,
-			requestStatus: ''
-		},
-		{
-			id: 4,
-			articleUrl: 'https://dagbladet.no/url-4',
-			name: 'SpaceX',
-			text: 'Some text 4',
-			isFormOpened: false,
-			requestStatus: ''
-		},
-		{
-			id: 5,
-			articleUrl: 'https://dagbladet.no/url-5',
-			name: 'SpaceX',
-			text: 'Some text 5',
-			isFormOpened: false,
-			requestStatus: ''
-		}
-	]
-}
 
 export function toggleForm(articles, id) {
 
@@ -95,7 +55,7 @@ export function editRequest(articles, modifiedArticle) {
 			payload: modifiedState
 		})
 
-		httpRequest('POST', 'http://www.omdbapi.com/?apikey=b080b47c&plot=full&s=Star%20Wars&page=1')
+		httpRequest('POST', MOCK_URL)
 			.then(
 				response => {
 					let modifiedState = articles.map((article) => {
@@ -142,15 +102,15 @@ export function getArticles(url) {
 		httpRequest('GET', url)
 			.then(
 				response => {
-					if (mockArticlesReqData.articles.length) {
+					if (MOCK_ARTICLES_REQ_DATA.articles.length) {
 						dispatch({
 							type: ARTICLES_REQUEST_SUCCESS,
-							payload: mockArticlesReqData.articles
+							payload: MOCK_ARTICLES_REQ_DATA.articles
 						})
 					} else {
 						dispatch({
 							type: HANDLE_EMPTY_LIST,
-							payload: mockArticlesReqData.articles
+							payload: MOCK_ARTICLES_REQ_DATA.articles
 						})
 					}
 				},

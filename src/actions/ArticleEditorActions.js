@@ -15,6 +15,10 @@ import {
 } from '../constants/ArticleList'
 
 import {
+	MOCK_URL
+} from '../constants/constants'
+
+import {
 	httpRequest
 } from '../utils/utils'
 
@@ -27,7 +31,7 @@ export function deleteRequest(modifiedArticle) {
 			payload: modifiedArticle
 		})
 
-		httpRequest('POST', 'http://www.omdbapi.com/?apikey=b080b47c&plot=full&s=Star%20Wars&page=1')
+		httpRequest('POST', MOCK_URL)
 			.then(
 				response => {
 					dispatch({
@@ -58,7 +62,7 @@ export function approveRequest(modifiedArticle) {
 			payload: modifiedArticle
 		})
 
-		httpRequest('POST', 'http://www.omdbapi.com/?apikey=b080b47c&plot=full&s=Star%20Wars&page=1')
+		httpRequest('POST', MOCK_URL)
 			.then(
 				response => {
 					dispatch({

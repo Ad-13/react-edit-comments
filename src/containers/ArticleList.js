@@ -4,6 +4,9 @@ import Article from '../components/Article'
 import Loader from '../components/Loader'
 import { bindActionCreators } from 'redux'
 import * as ArticleListActions from '../actions/ArticleListActions'
+import {
+	MOCK_URL
+} from '../constants/constants'
 
 class ArticleList extends Component {
 	render() {
@@ -34,7 +37,7 @@ class ArticleList extends Component {
 	}
 
 	componentDidMount() {
-		this.props.ArticleListActions.getArticles('http://www.omdbapi.com/?apikey=b080b47c&plot=full&s=Star%20Wars&page=1');
+		this.props.ArticleListActions.getArticles(MOCK_URL);
 	}
 }
 
