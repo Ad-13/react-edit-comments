@@ -35,7 +35,7 @@ export function setRequestStatus(articles, modifiedArticle, requestStatus) {
 	return modifiedState;
 }
 
-export function getNewArticles(articles, modifiedArticle) {
+export function getArticlesToEdit(articles, modifiedArticle) {
 	let newArticles = articles.slice();
 
 	for (let i = newArticles.length - 1; i >= 0; i--) {
@@ -79,17 +79,13 @@ export function setModifiedArticle(articles, modifiedArticle) {
 	for (let i = newArticles.length - 1; i >= 0; i--) {
 		let article = newArticles[i];
 		if (article.id === modifiedArticle.id) {
-			article.text = modifiedArticle.text;
+			article.originalText = modifiedArticle.originalText;
 			article.requestStatus = '';
 			article.isFormOpened = false;
 		}
 	}
 
 	return newArticles;
-}
-
-export function hasArticle(article1, article2) {
-	return article1.id == article2.id;
 }
 
 /* eslint-enable */

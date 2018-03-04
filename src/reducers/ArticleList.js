@@ -12,7 +12,8 @@ import {
 } from '../constants/ArticleList'
 
 import {
-	setModifiedArticle
+	setModifiedArticle,
+	setRequestStatus
 } from '../utils/utils'
 
 const initialState = {
@@ -24,11 +25,14 @@ const initialState = {
 
 export default function ArticleList(state = initialState, action) {
 	switch (action.type) {
-	case ARTICLES_REQUEST:
-		return { ...state, fetching: true }
-
+	case TOGGLE_FORM:
+		return { ...state, articles: action.payload }
+		
 	case HANDLE_EMPTY_LIST:
 		return { ...state, articles: action.payload, fetching: false, error: '', emptyList: true }
+
+	case ARTICLES_REQUEST:
+		return { ...state, fetching: true }
 
 	case ARTICLES_REQUEST_SUCCESS:
 		return { ...state, articles: action.payload, fetching: false, error: '' }
@@ -37,16 +41,13 @@ export default function ArticleList(state = initialState, action) {
 		return { ...state, error: action.payload.message, fetching: false }
 
 	case EDIT_REQUEST:
-		return { ...state, articles: action.payload }
+		return { ...state, articles: setRequestStatus(state.articles, action.payload, 'pending') }
 
 	case EDIT_REQUEST_ACCEPTED:
-		return { ...state, articles: action.payload }
+		return { ...state, articles: setRequestStatus(state.articles, action.payload, 'success') }
 
 	case EDIT_REQUEST_FAIL:
-		return { ...state, articles: action.payload }
-
-	case TOGGLE_FORM:
-		return { ...state, articles: action.payload }
+		return { ...state, articles: setRequestStatus(state.articles, action.payload, 'fail') }
 
 	case SET_ARTICLE_TO_LIST:
 		return { ...state, articles: setModifiedArticle(state.articles, action.payload) }

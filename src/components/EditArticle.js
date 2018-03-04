@@ -29,7 +29,7 @@ export default class EditArticle extends Component {
 					<p className='article__text article__text--title'>
 						<span className='txt'>Original Text:</span>
 					</p>
-					<p className='article__text article__text--original'>{article.text}</p>
+					<p className='article__text article__text--original'>{article.originalText}</p>
 					<div className='users-suggestions'>
 						<div className='article__text article__text--title'>
 							<span className='txt'>Users suggestions:</span>
@@ -103,7 +103,7 @@ export default class EditArticle extends Component {
 				id: currentArticle.id,
 				articleUrl: currentArticle.articleUrl,
 				name: currentArticle.name,
-				text: newText,
+				originalText: newText,
 				isFormOpened: false,
 				requestStatus: ''
 			}

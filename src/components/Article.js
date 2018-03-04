@@ -25,7 +25,7 @@ export default class Article extends Component {
 					>
 						<span className='img'></span>
 					</button>
-					<p className='article__text'>{article.text}</p>
+					<p className='article__text'>{article.originalText}</p>
 					<AnimateHeight
 						duration={500}
 						height={formHeight}
@@ -82,7 +82,7 @@ export default class Article extends Component {
 				id: currentArticle.id,
 				articleUrl: currentArticle.articleUrl,
 				name: currentArticle.name,
-				originalText: currentArticle.text,
+				originalText: currentArticle.originalText,
 				usersText: [usersText]
 			}
 		}

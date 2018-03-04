@@ -25,11 +25,10 @@ export default class UserText extends Component {
 			id: this.article.id,
 			articleUrl: this.article.articleUrl,
 			name: this.article.name,
-			text: newText,
+			originalText: newText,
 			isFormOpened: false,
 			requestStatus: ''
 		}
-		console.log(modifiedArticle);
 		this.approveRequest(modifiedArticle);
 	}
 

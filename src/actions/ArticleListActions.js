@@ -42,32 +42,18 @@ export function toggleForm(articles, id) {
 export function editRequest(articles, modifiedArticle) {
 
 	return (dispatch) => {
-		let modifiedState = articles.map((article) => {
-			if (article.id == modifiedArticle.id) {
-				article.requestStatus = 'pending';
-			}
-
-			return article;
-		})
 	
 		dispatch({
 			type: EDIT_REQUEST,
-			payload: modifiedState
+			payload: modifiedArticle
 		})
 
 		httpRequest('POST', MOCK_URL)
 			.then(
 				response => {
-					let modifiedState = articles.map((article) => {
-						if (article.id == modifiedArticle.id) {
-							article.requestStatus = 'success';
-						}
-
-						return article;
-					})
 					dispatch ({
 						type: EDIT_REQUEST_ACCEPTED,
-						payload: modifiedState
+						payload: modifiedArticle
 					})
 					dispatch ({
 						type: SET_ARTICLE_TO_EDIT,
@@ -75,16 +61,9 @@ export function editRequest(articles, modifiedArticle) {
 					})
 				},
 				error => {
-					let modifiedState = articles.map((article) => {
-						if (article.id == modifiedArticle.id) {
-							article.requestStatus = 'fail';
-						}
-
-						return article;
-					})
 					dispatch ({
 						type: EDIT_REQUEST_FAIL,
-						payload: modifiedState
+						payload: modifiedArticle
 					})
 				}
 			)

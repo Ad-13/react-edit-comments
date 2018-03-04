@@ -23,6 +23,7 @@ import {
 } from '../utils/utils'
 
 export function deleteRequest(modifiedArticle) {
+	console.log(modifiedArticle);
 
 	return (dispatch) => {
 

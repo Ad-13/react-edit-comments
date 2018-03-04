@@ -6,7 +6,7 @@ export const MOCK_ARTICLES_REQ_DATA = {
 			id: 1,
 			articleUrl: URL_PARAMETER,
 			name: 'SpaceX',
-			text: 'Some text 1',
+			originalText: 'Some text 1',
 			isFormOpened: false,
 			requestStatus: ''
 		},
@@ -14,7 +14,7 @@ export const MOCK_ARTICLES_REQ_DATA = {
 			id: 2,
 			articleUrl: URL_PARAMETER,
 			name: 'SpaceX',
-			text: 'Some text 2',
+			originalText: 'Some text 2',
 			isFormOpened: false,
 			requestStatus: ''
 		},
@@ -22,7 +22,7 @@ export const MOCK_ARTICLES_REQ_DATA = {
 			id: 3,
 			articleUrl: URL_PARAMETER,
 			name: 'SpaceX',
-			text: 'Some text 3',
+			originalText: 'Some text 3',
 			isFormOpened: false,
 			requestStatus: ''
 		},
@@ -30,7 +30,7 @@ export const MOCK_ARTICLES_REQ_DATA = {
 			id: 4,
 			articleUrl: URL_PARAMETER,
 			name: 'SpaceX',
-			text: 'Some text 4',
+			originalText: 'Some text 4',
 			isFormOpened: false,
 			requestStatus: ''
 		},
@@ -38,7 +38,7 @@ export const MOCK_ARTICLES_REQ_DATA = {
 			id: 5,
 			articleUrl: URL_PARAMETER,
 			name: 'SpaceX',
-			text: 'Some text 5',
+			originalText: 'Some text 5',
 			isFormOpened: false,
 			requestStatus: ''
 		}

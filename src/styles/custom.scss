@@ -1,0 +1,422 @@
+/*-------------- end custom ---------------*/
+.articles-app__header {
+	padding: 15px 0;
+}
+
+.articles-app__title {
+	font-size: 24px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.articles-app__nav {
+	text-align: center;
+	
+	&__link {
+		margin: 0 15px;
+	}
+}
+
+.articles-list {
+	background: #dcdcdc;
+	border-radius: 5px;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+	max-width: 600px;
+	margin: 0 auto 20px;
+	overflow: hidden;
+	padding: 15px;
+	
+	.loader {
+		display: block;
+		margin: auto;
+
+		.inner1, .inner2, .inner3 {
+			background: #1b3039;
+		}
+	}
+}
+
+.article__header {
+	background: #1b3039;
+	color: #fff;
+	display: flex;
+	justify-content: space-between;
+	padding: 20px;
+
+	.article__name {
+		max-width: 80%;
+	}
+}
+
+.article__content {
+	background: #445963;
+	color: #fff;
+	padding: 20px;
+	position: relative;
+	transition: all .3s;
+
+	.article__text {
+		font-style: italic;
+		max-width: 95%;
+		margin-bottom: 10px;
+
+		&--title {
+			font-style: normal;
+		}
+
+		&--original {
+			background: #233e4a;
+			padding: 10px;
+		}
+	}
+	
+	.toggle-form {
+		position: absolute;
+		top: -10px;
+		right: 20px;
+	}
+}
+
+.article {
+	border-radius: 2px;
+	margin-bottom: 10px;
+	overflow: hidden;
+	position: relative;
+	transition: all .2s ease-in-out;
+	&:hover {
+		margin: 0 -10px 10px;
+	}
+	&:last-child {
+		margin-bottom: 0;
+	}
+	&--edit {
+		.article__text {
+			max-width: 100%;
+			&--title {
+				
+				.txt {
+					max-width: 70%;
+				}
+			}
+		}
+	}
+	&.success {
+		.article__content {
+			height: 0;
+			overflow: hidden;
+			padding: 0;
+		}
+		.message--success {
+			display: block;
+		}
+	}
+	&.fail {
+		.message--fail {
+			display: block;
+		}
+	}
+	&.pending {
+		.loader {
+			display: inline-block;
+			.inner1, .inner2, .inner3 {
+				background: lightgray;
+			}
+		}
+		.submit[disabled] {
+			opacity: 0.6;
+			&:hover {
+				background: rgba(255, 255, 255, 0.1);
+			}
+		}
+	}
+
+	.message {
+		display: none;
+		margin-top: 10px;
+	}
+
+	.loader {
+		display: none;
+		margin-left: 15px;
+	}
+}
+
+.article__form {
+	background: transparent;
+	transition: all .3s;
+
+	.edit-article {
+		margin-bottom: 15px;
+	}
+}
+
+.toggle-form {
+	background: #44768e;
+	border: 0;
+	border-radius: 50%;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+	cursor: pointer;
+	outline: none;
+	position: relative;
+	transition: all .3s;
+	width: 35px;
+	height: 35px;
+	&:hover {
+		background: #4e85a0;
+	}
+	&.active {
+		.img {
+			transform: rotate(315deg);
+			&::before,
+			&::after {
+				height: 18px;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+			&::after {
+				transform: translate(-50%, -50%) rotate(90deg);
+			}
+		}
+	}
+
+	.img {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		border-radius: 50%;
+		transform: rotate(45deg);
+		transition: all .6s;
+		&::before,
+		&::after {
+			content: '';
+			background: #fff;
+			display: inline-block;
+			width: 1px;
+			height: 14px;
+			position: absolute;
+			transition: all .3s;
+		}
+		&::before {
+			top: 20%;
+			left: 58%;
+		}
+		&::after {
+			top: 40%;
+			left: 38%;
+			transform: rotate(90deg);
+		}
+	}
+}
+
+.edit-article {
+	background: #E1E2E1;
+	border: 0;
+	display: block;
+	font-family: arial, sans-serif;
+	margin: 0px;
+	min-height: 60px;
+	padding: 5px;
+	resize: vertical;
+	height: 100%;
+	width: 100%;
+}
+
+.submit {
+	background: rgba(255, 255, 255, .1);
+	border: 1px solid #fff;
+	border-radius: 50px;
+	color: #fff;
+	cursor: pointer;
+	outline: 0;
+	padding: 7px 15px;
+	transition: all .3s;
+	vertical-align: middle;
+	&:hover {
+		background: rgba(255, 255, 255, .2);
+	}
+}
+
+.users-suggestions {
+	padding-top: 10px;
+
+	.article__text {
+		&--title {
+			background: transparent;
+			color: #fff;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 0;
+
+			.loader {
+				margin-right: 0;
+				margin-left: auto;
+			}
+		}
+	}
+
+	.article__form {
+		padding-top: 20px;
+	}
+
+}
+
+.user-text {
+	margin-top: 20px;
+	&:last-child {
+		margin-top: 0;
+	}
+	.txt {
+		background: #E1E2E1;
+		color: #000;
+		font-style: italic;
+		margin-bottom: 10px;
+		padding: 5px;
+	}
+}
+
+.form-input {
+	position: relative;
+	&.error {
+		.tooltip {
+			top: 116%;
+			opacity: 1;
+			z-index: 1;
+		}
+	}
+
+	.tooltip {
+		top: 80%;
+		right: 20px;
+		opacity: 0;
+		z-index: -1;
+	}
+}
+
+.tooltip {
+	background: rgba(0, 0, 0, .6);
+	border-radius: 20px;
+	color: #fff;
+	display: inline-block;
+	font-size: 11px;
+	padding: 7px;
+	position: absolute;
+	transition: all .3s;
+	&::before {
+		content: '';
+		border: 10px solid transparent;
+		border-bottom: 10px solid rgba(0, 0, 0, .6);
+		position: absolute;
+		bottom: 100%;
+		left: 50%;
+		transform: translate(-50%, 0);
+	}
+}
+
+.message {
+	color: #fff;
+	padding: 20px;
+	padding-left: 40px;
+	transition: all .3s;
+	position: relative;
+	transition: all .3s;
+	&.message--fail {
+		background: rgba(193, 24, 91, .6);
+
+		.img {
+			transform: translate(0, -50%) rotate(45deg);
+			&::before,
+			&::after {
+				transform: translate(-50%, -50%);
+			}
+	
+			&::after {
+				transform: translate(-50%, -50%) rotate(90deg);
+			}
+		}
+	}
+	&.message--success {
+		background: rgba(76, 175, 80, .6);
+		margin-top: 0;
+
+		.img {
+			&::before {
+				background: transparent;
+				border-right: 1px solid #fff;
+				border-bottom: 1px solid #fff;
+				width: 7px;
+				height: 7px;
+				margin-top: -2px;
+				transform: translate(-50%, -50%) rotate(45deg);
+			}
+			&::after {
+				display: none;
+			}
+		}
+	}
+
+	
+	.img {
+		background: transparent;
+		border: 1px solid #fff;
+		border-radius: 50%;
+		display: inline-block;
+		height: 20px;
+		width: 20px;
+		position: absolute;
+		top: 50%;
+		left: 10px;
+		transform: translate(0, -50%);
+
+		&::before,
+		&::after {
+			content: '';
+			background: #fff;
+			height: 15px;
+			width: 1px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+		}
+	}
+}
+
+
+.fade-in {
+	animation: fade-in 5s ease-in-out 0 1;
+	animation-fill-mode: forwards;
+}
+
+.fade-out {
+	animation: fade-out 5s ease-in-out 0 1;
+	animation-fill-mode: forwards;
+}
+
+@keyframes fade-in {
+	0% {
+		opacity: 0;
+	}
+	99% {
+		opacity: 1;
+	}
+	100% {
+		display: block;
+	}
+} 
+
+@keyframes fade-out {
+	0% {
+		opacity: 1;
+	}
+	99% {
+		opacity: 0;
+	}
+	100% {
+		display: none;
+	}
+} 
+
+/*-------------- end custom ---------------*/
