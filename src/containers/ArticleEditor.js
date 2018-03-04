@@ -3,12 +3,20 @@ import { connect } from 'react-redux'
 import EditArticle from '../components/EditArticle'
 import { bindActionCreators } from 'redux'
 import * as ArticleListActions from '../actions/ArticleListActions'
+import * as ArticleEditorActions from '../actions/ArticleEditorActions'
 
 class ArticleEditor extends Component {
 	render() {
 		const articles = this.props.editArticle.articlesToEdit
+		const approveRequest = this.props.ArticleEditorActions.approveRequest
+		const deleteRequest = this.props.ArticleEditorActions.deleteRequest
 		const articlesTemplate = articles.map(article => {
-			return <EditArticle key={article.id} article={article} />
+			return <EditArticle 
+				key={article.id} 
+				article={article} 
+				approveRequest={approveRequest} 
+				deleteRequest={deleteRequest} 
+			/>
 		})
 		return (
 			<div className='articles-list'>
@@ -27,7 +35,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		ArticleListActions: bindActionCreators(ArticleListActions, dispatch)
+		ArticleListActions: bindActionCreators(ArticleListActions, dispatch),
+		ArticleEditorActions: bindActionCreators(ArticleEditorActions, dispatch)
 	}
 }
 

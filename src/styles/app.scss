@@ -93,6 +93,13 @@
 			&:hover {
 				background: #297d4c;
 			}
+
+			&[disabled] {
+				opacity: 0.6;
+				&:hover {
+					background: #4caf50;
+				}
+			}
 		}
 
 		&--decline {
@@ -102,6 +109,13 @@
 			
 			&:hover {
 				background: #d51d66;
+			}
+
+			&[disabled] {
+				opacity: 0.6;
+				&:hover {
+					background: #c1185b;
+				}
 			}
 		}
 	}
@@ -358,12 +372,18 @@
 			justify-content: space-between;
 			align-items: center;
 			padding: 0;
+
+			.loader {
+				margin-right: 0;
+				margin-left: auto;
+			}
 		}
 	}
 
 	.article__form {
 		padding-top: 20px;
 	}
+
 }
 
 .user-text {

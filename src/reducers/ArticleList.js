@@ -1,4 +1,5 @@
 import {
+	SET_ARTICLE_TO_LIST,
 	TOGGLE_FORM,
 	EDIT_REQUEST,
 	EDIT_REQUEST_ACCEPTED,
@@ -6,8 +7,13 @@ import {
 	ARTICLES_REQUEST,
 	ARTICLES_REQUEST_SUCCESS,
 	ARTICLES_REQUEST_FAIL,
-	HANDLE_EMPTY_LIST
+	HANDLE_EMPTY_LIST,
+	CANCEL_REQUEST
 } from '../constants/ArticleList'
+
+import {
+	setModifiedArticle
+} from '../utils/utils'
 
 const initialState = {
 	articles: [],
@@ -41,6 +47,12 @@ export default function ArticleList(state = initialState, action) {
 
 	case TOGGLE_FORM:
 		return { ...state, articles: action.payload }
+
+	case SET_ARTICLE_TO_LIST:
+		return { ...state, articles: setModifiedArticle(state.articles, action.payload) }
+
+	case CANCEL_REQUEST:
+		return { ...state, articles: setModifiedArticle(state.articles, action.payload) }
 
 	default:
 		return state;

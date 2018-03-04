@@ -34,7 +34,6 @@ class ArticleList extends Component {
 	}
 
 	componentDidMount() {
-		console.log('componentDidMount');
 		this.props.ArticleListActions.getArticles('http://www.omdbapi.com/?apikey=b080b47c&plot=full&s=Star%20Wars&page=1');
 	}
 }

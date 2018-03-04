@@ -14,6 +14,10 @@ import {
 	SET_ARTICLE_TO_EDIT
 } from '../constants/EditArticle'
 
+import {
+	httpRequest
+} from '../utils/utils'
+
 const mockArticlesReqData = {
 	articles: [
 		{
@@ -138,7 +142,6 @@ export function getArticles(url) {
 		httpRequest('GET', url)
 			.then(
 				response => {
-					console.log(`Fulfilled: ${response}`)
 					if (mockArticlesReqData.articles.length) {
 						dispatch({
 							type: ARTICLES_REQUEST_SUCCESS,
@@ -152,7 +155,6 @@ export function getArticles(url) {
 					}
 				},
 				error => {
-					console.log(`Rejected: ${error}`)
 					dispatch({
 						type: ARTICLES_REQUEST_FAIL,
 						error: true,
@@ -163,28 +165,4 @@ export function getArticles(url) {
 	}
 }
 
-function httpRequest(method, url) {
-
-	return new Promise(function (resolve, reject) {
-
-		var xhr = new XMLHttpRequest();
-		xhr.open(method, url, true);
-
-		xhr.onload = function () {
-			if (this.status == 200) {
-				resolve(this.response);
-			} else {
-				var error = new Error(this.statusText);
-				error.code = this.status;
-				reject(error);
-			}
-		};
-
-		xhr.onerror = function () {
-			reject(new Error('Network Error'));
-		};
-
-		xhr.send();
-	});
-}
 /* eslint-enable */

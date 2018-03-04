@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
+import Loader from './Loader'
 
 export default class UserText extends Component {
+	approveRequest = this.props.approveRequest
+	article = this.props.article || {}
 	render() {
 		const usersText = this.props.userText || []
 		return (
@@ -9,14 +12,25 @@ export default class UserText extends Component {
 				<button
 					className='btn btn--approve'
 					onClick={() => this.approveSuggestion()}
+					disabled={this.article.requestStatus == 'pending' ? true : false}
 				>Approve</button>
+				<Loader />
 			</div>
 		)
 	}
 
 	approveSuggestion() {
-		console.log('approveSuggestion');
-		console.log(this.refs.userText.innerText);
+		const newText = this.refs.userText.innerText;
+		let modifiedArticle = {
+			id: this.article.id,
+			articleUrl: this.article.articleUrl,
+			name: this.article.name,
+			text: newText,
+			isFormOpened: false,
+			requestStatus: ''
+		}
+		console.log(modifiedArticle);
+		this.approveRequest(modifiedArticle);
 	}
 
 }

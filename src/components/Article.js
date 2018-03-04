@@ -71,7 +71,7 @@ export default class Article extends Component {
 		let modifiedArticle;
 		const suggestion = this.refs.suggestionText;
 		const usersText = suggestion.value;
-		const article = this.props.article;
+		const currentArticle = this.props.article;
 		const articles = this.props.articles;
 
 		if (!usersText) {
@@ -79,10 +79,10 @@ export default class Article extends Component {
 			return;
 		} else {
 			modifiedArticle = {
-				id: article.id,
-				articleUrl: article.articleUrl,
-				name: article.name,
-				originalText: article.text,
+				id: currentArticle.id,
+				articleUrl: currentArticle.articleUrl,
+				name: currentArticle.name,
+				originalText: currentArticle.text,
 				usersText: [usersText]
 			}
 		}
